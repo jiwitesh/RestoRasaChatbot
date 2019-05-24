@@ -36,7 +36,7 @@ def run_restaurant_bot(serve_forever=True):
     interpreter = RasaNLUInterpreter('./models/nlu/default/restaurantnlu')
     agent = Agent.load('./models/dialogue', interpreter = interpreter, action_endpoint ='./endpoints.yml')
     #agent = Agent.load('./models/dialogue', interpreter = interpreter)
-    input_channel = SlackInput('xoxb-641833006836-631125483043-sxQ6Rt1JHsyIJ9re8gY78gP2')#your bot user authentication token
+    input_channel = SlackInput('SLACK_BOT_API_HERE')#your bot user authentication token
     agent.handle_channels([input_channel], 5004, serve_forever=True)
     return agent
 	
