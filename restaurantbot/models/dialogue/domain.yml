@@ -1,0 +1,119 @@
+%YAML 1.1
+---
+actions:
+- utter_greet
+- utter_goodbye
+- utter_default
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_cuisine
+- utter_ask_budget
+- utter_ask_email_id
+- utter_top_restaurant
+- utter_ask_about_emailing
+- utter_sorry_dont_operate
+- utter_location_not_found
+- utter_searching
+- action_restaurant
+- action_email
+- action_validate_cuisine
+- action_validate_location
+- action_validate_budget
+- action_validate_email
+- action_restarted
+config:
+  store_entities_as_slots: true
+entities:
+- location
+- cuisine
+- budget
+- email
+forms: []
+intents:
+- greet:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- thankyou:
+    use_entities: true
+- out_of_scope:
+    use_entities: true
+- restaurant_search:
+    use_entities: true
+- send_email:
+    use_entities: true
+slots:
+  budget:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  cuisine:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  email:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  location:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+templates:
+  utter_ask_about_emailing:
+  - text: Should i send you details of all the restuarants on email?
+  utter_ask_budget:
+  - buttons:
+    - payload: Less than Rs. 300
+      title: Less than Rs. 300
+    - payload: Rs. 300 - 700
+      title: Rs. 300-700
+    - payload: More than 700
+      title: More than 700
+    text: what's the average budget for two people?
+  utter_ask_cuisine:
+  - buttons:
+    - payload: Chinese
+      title: Chinese
+    - payload: Mexican
+      title: Mexican
+    - payload: Italian
+      title: Italian
+    - payload: American
+      title: American
+    - payload: South Indian
+      title: South Indian
+    text: what kind of cuisine would you like to have?
+  utter_ask_email_id:
+  - text: To what email id should I sent it to you?
+  utter_ask_howcanhelp:
+  - text: how can I help you?
+  utter_ask_location:
+  - text: Sure. Can you please tell me the location?
+  utter_default:
+  - text: Sorry I did not understand what you just said
+  utter_goodbye:
+  - text: goodbye :(
+  - text: Bye-bye
+  - text: Have a nice day. Good Bye
+  utter_greet:
+  - text: hey there! How may i help you
+  - text: Hi, How can I help you!
+  - text: Hey, How is it going. How May I help you Today
+  - text: Hello. How can i help you today
+  - text: Namaste. Its a good day. How may i help you Today
+  - text: Namashkar. Its a good day. How may i help you Today
+  - text: Welcome to Table booking bot
+  utter_location_not_found:
+  - text: "Sorry, didn’t find any such location. Can you please tell again ? \n"
+  utter_searching:
+  - text: "Ok, let me find some good rating restaurants for your budget range... \n"
+  utter_sorry_dont_operate:
+  - text: "Sorry, we don’t operate in this city. Can you please specify some other\
+      \ location ? \n"
+  utter_top_restaurant:
+  - text: 'Showing you top rated restaurants:'

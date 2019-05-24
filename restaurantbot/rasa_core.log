@@ -1,0 +1,359 @@
+Rasa process starting
+Added 'SpacyNLP' to component cache. Key 'SpacyNLP-en'.
+Scheduler started
+From D:\DS\lib\site-packages\tensorflow\python\ops\resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+From D:\DS\lib\site-packages\tensorflow\python\keras\backend.py:4010: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+From D:\DS\lib\site-packages\tensorflow\python\ops\math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+Rasa Core server is up and running on http://localhost:5005
+Rasa process starting
+Added 'SpacyNLP' to component cache. Key 'SpacyNLP-en'.
+Scheduler started
+From D:\DS\lib\site-packages\tensorflow\python\ops\resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+From D:\DS\lib\site-packages\tensorflow\python\keras\backend.py:4010: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+From D:\DS\lib\site-packages\tensorflow\python\ops\math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+Rasa Core server is up and running on http://localhost:5005
+Rasa process starting
+Added 'SpacyNLP' to component cache. Key 'SpacyNLP-en'.
+Scheduler started
+From D:\DS\lib\site-packages\tensorflow\python\ops\resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+From D:\DS\lib\site-packages\tensorflow\python\keras\backend.py:4010: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+From D:\DS\lib\site-packages\tensorflow\python\ops\math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+Rasa Core server is up and running on http://localhost:5004
+Exception when trying to handle message.Cannot access action 'Sorry! Couldn't get what you are saying', as that name is not a registered action for this domain. Available actions are: 
+	 - action_listen
+	 - action_restart
+	 - action_default_fallback
+	 - action_deactivate_form
+	 - action_revert_fallback_events
+	 - action_default_ask_affirmation
+	 - action_default_ask_rephrase
+	 - action_back
+	 - utter_greet
+	 - utter_goodbye
+	 - utter_default
+	 - utter_ask_howcanhelp
+	 - utter_ask_location
+	 - utter_ask_cuisine
+	 - utter_ask_budget
+	 - utter_ask_email_id
+	 - utter_top_restaurant
+	 - utter_ask_about_emailing
+	 - utter_sorry_dont_operate
+	 - utter_location_not_found
+	 - utter_searching
+	 - ActionValidateLocation
+	 - action_restaurant
+	 - action_email
+	 - action_validate_cuisine
+	 - action_validate_location
+	 - action_validate_budget
+	 - action_validate_email
+	 - action_restarted
+Cannot access action 'Sorry! Couldn't get what you are saying', as that name is not a registered action for this domain. Available actions are: 
+	 - action_listen
+	 - action_restart
+	 - action_default_fallback
+	 - action_deactivate_form
+	 - action_revert_fallback_events
+	 - action_default_ask_affirmation
+	 - action_default_ask_rephrase
+	 - action_back
+	 - utter_greet
+	 - utter_goodbye
+	 - utter_default
+	 - utter_ask_howcanhelp
+	 - utter_ask_location
+	 - utter_ask_cuisine
+	 - utter_ask_budget
+	 - utter_ask_email_id
+	 - utter_top_restaurant
+	 - utter_ask_about_emailing
+	 - utter_sorry_dont_operate
+	 - utter_location_not_found
+	 - utter_searching
+	 - ActionValidateLocation
+	 - action_restaurant
+	 - action_email
+	 - action_validate_cuisine
+	 - action_validate_location
+	 - action_validate_budget
+	 - action_validate_email
+	 - action_restarted
+Traceback (most recent call last):
+  File "D:\DS\lib\site-packages\rasa_core\domain.py", line 351, in index_for_action
+    return self.action_names.index(action_name)
+ValueError: "Sorry! Couldn't get what you are saying" is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\DS\lib\site-packages\rasa_core\channels\slack.py", line 205, in process_message
+    on_new_message(user_msg)
+  File "D:\DS\lib\site-packages\rasa_core\agent.py", line 322, in handle_message
+    return processor.handle_message(message)
+  File "D:\DS\lib\site-packages\rasa_core\processor.py", line 77, in handle_message
+    self._predict_and_execute_next_action(message, tracker)
+  File "D:\DS\lib\site-packages\rasa_core\processor.py", line 298, in _predict_and_execute_next_action
+    action, policy, confidence = self.predict_next_action(tracker)
+  File "D:\DS\lib\site-packages\rasa_core\processor.py", line 158, in predict_next_action
+    probabilities, policy = self._get_next_action_probabilities(tracker)
+  File "D:\DS\lib\site-packages\rasa_core\processor.py", line 471, in _get_next_action_probabilities
+    tracker, self.domain)
+  File "D:\DS\lib\site-packages\rasa_core\policies\ensemble.py", line 340, in probabilities_using_best_policy
+    probabilities = p.predict_action_probabilities(tracker, domain)
+  File "D:\DS\lib\site-packages\rasa_core\policies\fallback.py", line 115, in predict_action_probabilities
+    result = self.fallback_scores(domain, self.core_threshold)
+  File "D:\DS\lib\site-packages\rasa_core\policies\fallback.py", line 78, in fallback_scores
+    idx = domain.index_for_action(self.fallback_action_name)
+  File "D:\DS\lib\site-packages\rasa_core\domain.py", line 353, in index_for_action
+    self._raise_action_not_found_exception(action_name)
+  File "D:\DS\lib\site-packages\rasa_core\domain.py", line 362, in _raise_action_not_found_exception
+    "".format(action_name, action_names))
+NameError: Cannot access action 'Sorry! Couldn't get what you are saying', as that name is not a registered action for this domain. Available actions are: 
+	 - action_listen
+	 - action_restart
+	 - action_default_fallback
+	 - action_deactivate_form
+	 - action_revert_fallback_events
+	 - action_default_ask_affirmation
+	 - action_default_ask_rephrase
+	 - action_back
+	 - utter_greet
+	 - utter_goodbye
+	 - utter_default
+	 - utter_ask_howcanhelp
+	 - utter_ask_location
+	 - utter_ask_cuisine
+	 - utter_ask_budget
+	 - utter_ask_email_id
+	 - utter_top_restaurant
+	 - utter_ask_about_emailing
+	 - utter_sorry_dont_operate
+	 - utter_location_not_found
+	 - utter_searching
+	 - ActionValidateLocation
+	 - action_restaurant
+	 - action_email
+	 - action_validate_cuisine
+	 - action_validate_location
+	 - action_validate_budget
+	 - action_validate_email
+	 - action_restarted
+Received retry #1 request from slack due to http_timeout
+Exception when trying to handle message.Cannot access action 'Sorry! Couldn't get what you are saying', as that name is not a registered action for this domain. Available actions are: 
+	 - action_listen
+	 - action_restart
+	 - action_default_fallback
+	 - action_deactivate_form
+	 - action_revert_fallback_events
+	 - action_default_ask_affirmation
+	 - action_default_ask_rephrase
+	 - action_back
+	 - utter_greet
+	 - utter_goodbye
+	 - utter_default
+	 - utter_ask_howcanhelp
+	 - utter_ask_location
+	 - utter_ask_cuisine
+	 - utter_ask_budget
+	 - utter_ask_email_id
+	 - utter_top_restaurant
+	 - utter_ask_about_emailing
+	 - utter_sorry_dont_operate
+	 - utter_location_not_found
+	 - utter_searching
+	 - ActionValidateLocation
+	 - action_restaurant
+	 - action_email
+	 - action_validate_cuisine
+	 - action_validate_location
+	 - action_validate_budget
+	 - action_validate_email
+	 - action_restarted
+Cannot access action 'Sorry! Couldn't get what you are saying', as that name is not a registered action for this domain. Available actions are: 
+	 - action_listen
+	 - action_restart
+	 - action_default_fallback
+	 - action_deactivate_form
+	 - action_revert_fallback_events
+	 - action_default_ask_affirmation
+	 - action_default_ask_rephrase
+	 - action_back
+	 - utter_greet
+	 - utter_goodbye
+	 - utter_default
+	 - utter_ask_howcanhelp
+	 - utter_ask_location
+	 - utter_ask_cuisine
+	 - utter_ask_budget
+	 - utter_ask_email_id
+	 - utter_top_restaurant
+	 - utter_ask_about_emailing
+	 - utter_sorry_dont_operate
+	 - utter_location_not_found
+	 - utter_searching
+	 - ActionValidateLocation
+	 - action_restaurant
+	 - action_email
+	 - action_validate_cuisine
+	 - action_validate_location
+	 - action_validate_budget
+	 - action_validate_email
+	 - action_restarted
+Traceback (most recent call last):
+  File "D:\DS\lib\site-packages\rasa_core\domain.py", line 351, in index_for_action
+    return self.action_names.index(action_name)
+ValueError: "Sorry! Couldn't get what you are saying" is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\DS\lib\site-packages\rasa_core\channels\slack.py", line 205, in process_message
+    on_new_message(user_msg)
+  File "D:\DS\lib\site-packages\rasa_core\agent.py", line 322, in handle_message
+    return processor.handle_message(message)
+  File "D:\DS\lib\site-packages\rasa_core\processor.py", line 77, in handle_message
+    self._predict_and_execute_next_action(message, tracker)
+  File "D:\DS\lib\site-packages\rasa_core\processor.py", line 298, in _predict_and_execute_next_action
+    action, policy, confidence = self.predict_next_action(tracker)
+  File "D:\DS\lib\site-packages\rasa_core\processor.py", line 158, in predict_next_action
+    probabilities, policy = self._get_next_action_probabilities(tracker)
+  File "D:\DS\lib\site-packages\rasa_core\processor.py", line 471, in _get_next_action_probabilities
+    tracker, self.domain)
+  File "D:\DS\lib\site-packages\rasa_core\policies\ensemble.py", line 340, in probabilities_using_best_policy
+    probabilities = p.predict_action_probabilities(tracker, domain)
+  File "D:\DS\lib\site-packages\rasa_core\policies\fallback.py", line 115, in predict_action_probabilities
+    result = self.fallback_scores(domain, self.core_threshold)
+  File "D:\DS\lib\site-packages\rasa_core\policies\fallback.py", line 78, in fallback_scores
+    idx = domain.index_for_action(self.fallback_action_name)
+  File "D:\DS\lib\site-packages\rasa_core\domain.py", line 353, in index_for_action
+    self._raise_action_not_found_exception(action_name)
+  File "D:\DS\lib\site-packages\rasa_core\domain.py", line 362, in _raise_action_not_found_exception
+    "".format(action_name, action_names))
+NameError: Cannot access action 'Sorry! Couldn't get what you are saying', as that name is not a registered action for this domain. Available actions are: 
+	 - action_listen
+	 - action_restart
+	 - action_default_fallback
+	 - action_deactivate_form
+	 - action_revert_fallback_events
+	 - action_default_ask_affirmation
+	 - action_default_ask_rephrase
+	 - action_back
+	 - utter_greet
+	 - utter_goodbye
+	 - utter_default
+	 - utter_ask_howcanhelp
+	 - utter_ask_location
+	 - utter_ask_cuisine
+	 - utter_ask_budget
+	 - utter_ask_email_id
+	 - utter_top_restaurant
+	 - utter_ask_about_emailing
+	 - utter_sorry_dont_operate
+	 - utter_location_not_found
+	 - utter_searching
+	 - ActionValidateLocation
+	 - action_restaurant
+	 - action_email
+	 - action_validate_cuisine
+	 - action_validate_location
+	 - action_validate_budget
+	 - action_validate_email
+	 - action_restarted
+Rasa process starting
+Added 'SpacyNLP' to component cache. Key 'SpacyNLP-en'.
+Scheduler started
+From D:\DS\lib\site-packages\tensorflow\python\ops\resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+From D:\DS\lib\site-packages\tensorflow\python\keras\backend.py:4010: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+From D:\DS\lib\site-packages\tensorflow\python\ops\math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+Rasa Core server is up and running on http://localhost:5004
+Rasa process starting
+Added 'SpacyNLP' to component cache. Key 'SpacyNLP-en'.
+Scheduler started
+From D:\DS\lib\site-packages\tensorflow\python\ops\resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+From D:\DS\lib\site-packages\tensorflow\python\keras\backend.py:4010: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+From D:\DS\lib\site-packages\tensorflow\python\ops\math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+Rasa Core server is up and running on http://localhost:5005
+Failed to run custom action 'action_validate_location'. Action server responded with a non 200 status code of 500. Make sure your action server properly runs actions and returns a 200 once the action is executed. Error: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5055/webhook
+Encountered an exception while running action 'action_validate_location'. Bot will continue, but the actions events are lost. Make sure to fix the exception in your custom code.
+Rasa process starting
+Added 'SpacyNLP' to component cache. Key 'SpacyNLP-en'.
+Scheduler started
+From D:\DS\lib\site-packages\tensorflow\python\ops\resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+From D:\DS\lib\site-packages\tensorflow\python\keras\backend.py:4010: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+From D:\DS\lib\site-packages\tensorflow\python\ops\math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+Rasa Core server is up and running on http://localhost:5005
+Failed to run custom action 'action_validate_location'. Action server responded with a non 200 status code of 500. Make sure your action server properly runs actions and returns a 200 once the action is executed. Error: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5055/webhook
+Encountered an exception while running action 'action_validate_location'. Bot will continue, but the actions events are lost. Make sure to fix the exception in your custom code.
+Failed to run custom action 'action_validate_cuisine'. Action server responded with a non 200 status code of 500. Make sure your action server properly runs actions and returns a 200 once the action is executed. Error: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5055/webhook
+Encountered an exception while running action 'action_validate_cuisine'. Bot will continue, but the actions events are lost. Make sure to fix the exception in your custom code.
+Failed to run custom action 'action_validate_budget'. Action server responded with a non 200 status code of 500. Make sure your action server properly runs actions and returns a 200 once the action is executed. Error: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5055/webhook
+Encountered an exception while running action 'action_validate_budget'. Bot will continue, but the actions events are lost. Make sure to fix the exception in your custom code.
+Failed to run custom action 'action_validate_location'. Action server responded with a non 200 status code of 500. Make sure your action server properly runs actions and returns a 200 once the action is executed. Error: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5055/webhook
+Encountered an exception while running action 'action_validate_location'. Bot will continue, but the actions events are lost. Make sure to fix the exception in your custom code.
+Failed to run custom action 'action_validate_cuisine'. Action server responded with a non 200 status code of 500. Make sure your action server properly runs actions and returns a 200 once the action is executed. Error: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5055/webhook
+Encountered an exception while running action 'action_validate_cuisine'. Bot will continue, but the actions events are lost. Make sure to fix the exception in your custom code.
+Failed to run custom action 'action_restaurant'. Action server responded with a non 200 status code of 500. Make sure your action server properly runs actions and returns a 200 once the action is executed. Error: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5055/webhook
+Encountered an exception while running action 'action_restaurant'. Bot will continue, but the actions events are lost. Make sure to fix the exception in your custom code.
+Failed to run custom action 'action_validate_email'. Action server responded with a non 200 status code of 500. Make sure your action server properly runs actions and returns a 200 once the action is executed. Error: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5055/webhook
+Encountered an exception while running action 'action_validate_email'. Bot will continue, but the actions events are lost. Make sure to fix the exception in your custom code.
+Failed to run custom action 'action_email'. Action server responded with a non 200 status code of 500. Make sure your action server properly runs actions and returns a 200 once the action is executed. Error: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5055/webhook
+Encountered an exception while running action 'action_email'. Bot will continue, but the actions events are lost. Make sure to fix the exception in your custom code.
+Failed to run custom action 'action_restarted'. Action server responded with a non 200 status code of 500. Make sure your action server properly runs actions and returns a 200 once the action is executed. Error: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5055/webhook
+Encountered an exception while running action 'action_restarted'. Bot will continue, but the actions events are lost. Make sure to fix the exception in your custom code.
+Rasa process starting
+Added 'SpacyNLP' to component cache. Key 'SpacyNLP-en'.
+Scheduler started
+From D:\DS\lib\site-packages\tensorflow\python\ops\resource_variable_ops.py:435: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+From D:\DS\lib\site-packages\tensorflow\python\keras\backend.py:4010: calling dropout (from tensorflow.python.ops.nn_ops) with keep_prob is deprecated and will be removed in a future version.
+Instructions for updating:
+Please use `rate` instead of `keep_prob`. Rate should be set to `rate = 1 - keep_prob`.
+From D:\DS\lib\site-packages\tensorflow\python\ops\math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+Rasa Core server is up and running on http://localhost:5004
+Failed to run custom action 'action_validate_location'. Action server responded with a non 200 status code of 500. Make sure your action server properly runs actions and returns a 200 once the action is executed. Error: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5055/webhook
+Encountered an exception while running action 'action_validate_location'. Bot will continue, but the actions events are lost. Make sure to fix the exception in your custom code.
+Received retry #1 request from slack due to http_timeout
+Failed to run custom action 'action_validate_cuisine'. Action server responded with a non 200 status code of 500. Make sure your action server properly runs actions and returns a 200 once the action is executed. Error: 500 Server Error: INTERNAL SERVER ERROR for url: http://localhost:5055/webhook
+Encountered an exception while running action 'action_validate_cuisine'. Bot will continue, but the actions events are lost. Make sure to fix the exception in your custom code.
+Rasa process starting
+Added 'SpacyNLP' to component cache. Key 'SpacyNLP-en'.

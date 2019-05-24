@@ -1,0 +1,178 @@
+[
+    {
+        "text": "good morning",
+        "intent": "greet",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.45241405562043113
+        }
+    },
+    {
+        "text": "dear sir",
+        "intent": "greet",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.46999529455214434
+        }
+    },
+    {
+        "text": "correct",
+        "intent": "affirm",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.4295617658993951
+        }
+    },
+    {
+        "text": "nope",
+        "intent": "deny",
+        "intent_prediction": {
+            "name": "greet",
+            "confidence": 0.43898423771906336
+        }
+    },
+    {
+        "text": "never",
+        "intent": "deny",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.4143247998154259
+        }
+    },
+    {
+        "text": "not at all",
+        "intent": "deny",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.40577822199577035
+        }
+    },
+    {
+        "text": "for what",
+        "intent": "deny",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.4087450972009044
+        }
+    },
+    {
+        "text": "please do not",
+        "intent": "deny",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.37043651419721957
+        }
+    },
+    {
+        "text": "no need",
+        "intent": "deny",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.36715712467005174
+        }
+    },
+    {
+        "text": "ignore",
+        "intent": "deny",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.3961656416267645
+        }
+    },
+    {
+        "text": "Knock Knock anybody there?",
+        "intent": "greet",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.45469468330148394
+        }
+    },
+    {
+        "text": "Oye",
+        "intent": "greet",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.41524430164362297
+        }
+    },
+    {
+        "text": "Heya",
+        "intent": "greet",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.4734495697013568
+        }
+    },
+    {
+        "text": "Good morning",
+        "intent": "greet",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.45241405562043113
+        }
+    },
+    {
+        "text": "HALLO",
+        "intent": "greet",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.4643888710608598
+        }
+    },
+    {
+        "text": "Namaste",
+        "intent": "greet",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.4698776745873298
+        }
+    },
+    {
+        "text": "Namaskar",
+        "intent": "greet",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.39106773325337874
+        }
+    },
+    {
+        "text": "CIAO",
+        "intent": "greet",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.4568019120698525
+        }
+    },
+    {
+        "text": "SALAAM",
+        "intent": "greet",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.47439069059218447
+        }
+    },
+    {
+        "text": "Nomoskar",
+        "intent": "greet",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.4649062945468084
+        }
+    },
+    {
+        "text": "Chào",
+        "intent": "greet",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.4744303318830083
+        }
+    },
+    {
+        "text": "Adaab",
+        "intent": "greet",
+        "intent_prediction": {
+            "name": "restaurant_search",
+            "confidence": 0.42012848405846437
+        }
+    }
+]

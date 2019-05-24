@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Rasa Core Visualisation</title>
+    <script src="https://dagrejs.github.io/project/dagre-d3/latest/dagre-d3.min.js"></script>
+    <script src="https://dagrejs.github.io/project/dagre/latest/dagre.min.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://dagrejs.github.io/project/graphlib-dot/v0.6.3/graphlib-dot.js"></script>
+</head>
+<body>
+<div id="errormsg" style="color: #b00"></div>
+<svg>
+    <style>
+        .node.invisible > rect {
+            display: none;
+        }
+
+        .node.start > rect {
+            fill: #7f7;
+            rx: 30;
+            ry: 18;
+        }
+
+        .node.end > rect {
+            fill: #f77;
+            rx: 30;
+            ry: 18;
+        }
+
+        .node:not(.active) > rect, .node:not(.active) > .label {
+            opacity: 0.4;
+        }
+
+        .edgePath:not(.active) path {
+            opacity: 0.4;
+        }
+
+        .node.ellipsis > rect {
+            fill: #CCC;
+        }
+
+        .node.intent > rect {
+            fill: #7ff;
+        }
+
+        .node.dashed > rect {
+            stroke-dasharray: 5;
+        }
+
+        text {
+            font-weight: 300;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serf, serif;
+            font-size: 14px;
+            color: #1f1d1d;
+        }
+
+        .node rect {
+            stroke: #444;
+            fill: #fff;
+            stroke-width: 1.5px;
+        }
+
+        .edgePath path {
+            stroke: #333;
+            stroke-width: 1.5px;
+        }
+
+        svg {
+            position: fixed;
+            top: 10px;
+            left: 0;
+            height: 100%;
+            width: 100%
+        }
+    </style>
+    <g></g>
+</svg>
+<script>
+
+  function serveGraph() {
+    let oldInputGraphValue;
+
+    const url = 'visualization.dot';
+    const refreshInterval = 500;
+
+    // trigger a refresh by fetching an updated graph
+    setInterval(function () {
+      fetch(url).then(r => r.text()).then(dot => {
+        document.getElementById('errormsg').innerHTML = '';
+        if (oldInputGraphValue === dot) return;
+
+        oldInputGraphValue = dot;
+        drawGraph(dot);
+      }).catch(err => {
+        document.getElementById('errormsg').innerHTML =
+          'Failed to update plot. (' + err.message + ')';
+      });
+    }, refreshInterval);
+  }
+
+  function drawGraph(graph) {
+    let g = graphlibDot.read(graph);
+    // Set margins, if not present
+    if (!g.graph().hasOwnProperty("marginx") &&
+      !g.graph().hasOwnProperty("marginy")) {
+      g.graph().marginx = 20;
+      g.graph().marginy = 20;
+    }
+    g.graph().transition = function (selection) {
+      return selection.transition().duration(300);
+    };
+    // Render the graph into svg g
+    d3.select("svg g").call(render, g);
+  }
+  // Set up zoom support
+  const svg = d3.select("svg"),
+    inner = d3.select("svg g"),
+    zoom = d3.zoom().on("zoom", function () {
+      inner.attr("transform", d3.event.transform);
+    });
+  svg.call(zoom);
+
+  // Create and configure the renderer
+  const render = dagreD3.render();
+
+  let isClient = false;
+  isClient = true;
+
+  if (isClient) {
+    // Mark all nodes and their edges as active
+    cssRules = document.styleSheets[0].cssRules;
+    cssRules[3].style.opacity = 1;
+    cssRules[4].style.opacity = 1;
+
+    let graph;
+    graph = `digraph  {
+0 [class="start active", fillcolor=green, fontsize=12, label=START, style=filled];
+"-1" [class=end, fillcolor=red, fontsize=12, label=END, style=filled];
+1 [class="", fontsize=12, label=utter_greet];
+2 [class="", fontsize=12, label=utter_ask_location];
+3 [class="", fontsize=12, label=action_validate_location];
+4 [class="", fontsize=12, label=utter_ask_cuisine];
+5 [class="", fontsize=12, label=action_validate_cuisine];
+6 [class="", fontsize=12, label=utter_ask_budget];
+7 [class="", fontsize=12, label=utter_default];
+10 [class="", fontsize=12, label=utter_ask_budget];
+11 [class="", fontsize=12, label=utter_goodbye];
+12 [class="", fontsize=12, label=action_restarted];
+17 [class="", fontsize=12, label=utter_ask_budget];
+18 [class="", fontsize=12, label=action_validate_budget];
+19 [class="", fontsize=12, label=utter_top_restaurant];
+20 [class="", fontsize=12, label=action_restaurant];
+21 [class="", fontsize=12, label=utter_ask_about_emailing];
+22 [class="", fontsize=12, label=utter_ask_email_id];
+23 [class="", fontsize=12, label=action_validate_email];
+24 [class="", fontsize=12, label=action_email];
+31 [class="", fontsize=12, label=action_validate_cuisine];
+43 [class="", fontsize=12, label=action_validate_cuisine];
+68 [class="", fontsize=12, label=action_validate_location];
+94 [class="", fontsize=12, label=action_validate_budget];
+108 [class="", fontsize=12, label=action_validate_budget];
+159 [class="", fontsize=12, label=action_validate_cuisine];
+187 [class="", fontsize=12, label=utter_default];
+192 [class="", fontsize=12, label=action_validate_location];
+300 [class="", fontsize=12, label=action_validate_cuisine];
+321 [class="", fontsize=12, label=utter_default];
+334 [class="", fontsize=12, label=action_validate_email];
+449 [class="", fontsize=12, label=utter_greet];
+718 [class="", fontsize=12, label=utter_goodbye];
+783 [class=intent, fillcolor=lightblue, label=greet, shape=rect, style=filled];
+784 [class=intent, fillcolor=lightblue, label=out_of_scope, shape=rect, style=filled];
+785 [class=intent, fillcolor=lightblue, label="restaurant_searchlocation Mumbai", shape=rect, style=filled];
+786 [class=intent, fillcolor=lightblue, label="restaurant_searchcuisine Mexican", shape=rect, style=filled];
+787 [class=intent, fillcolor=lightblue, label="restaurant_searchcuisine Mexican", shape=rect, style=filled];
+788 [class=intent, fillcolor=lightblue, label="restaurant_searchbudget less than 300", shape=rect, style=filled];
+789 [class=intent, fillcolor=lightblue, label="restaurant_searchbudget more than 700", shape=rect, style=filled];
+790 [class=intent, fillcolor=lightblue, label="restaurant_searchcuisine Mexican budget more than 700", shape=rect, style=filled];
+791 [class=intent, fillcolor=lightblue, label=restaurant_search, shape=rect, style=filled];
+792 [class=intent, fillcolor=lightblue, label="restaurant_searchlocation rishikesh", shape=rect, style=filled];
+793 [class=intent, fillcolor=lightblue, label="restaurant_searchbudget less than 300", shape=rect, style=filled];
+794 [class=intent, fillcolor=lightblue, label=deny, shape=rect, style=filled];
+795 [class=intent, fillcolor=lightblue, label=greet, shape=rect, style=filled];
+796 [class=intent, fillcolor=lightblue, label="restaurant_searchcuisine Mexican", shape=rect, style=filled];
+797 [class=intent, fillcolor=lightblue, label="restaurant_searchbudget more than 700", shape=rect, style=filled];
+798 [class=intent, fillcolor=lightblue, label="restaurant_searchcuisine Mexican", shape=rect, style=filled];
+799 [class=intent, fillcolor=lightblue, label=deny, shape=rect, style=filled];
+800 [class=intent, fillcolor=lightblue, label="restaurant_searchlocation pune", shape=rect, style=filled];
+801 [class=intent, fillcolor=lightblue, label="restaurant_searchcuisine Italian", shape=rect, style=filled];
+802 [class=intent, fillcolor=lightblue, label="restaurant_searchcuisine brazilian", shape=rect, style=filled];
+803 [class=intent, fillcolor=lightblue, label=out_of_scope, shape=rect, style=filled];
+804 [class=intent, fillcolor=lightblue, label=out_of_scope, shape=rect, style=filled];
+805 [class=intent, fillcolor=lightblue, label="restaurant_searchbudget  700", shape=rect, style=filled];
+806 [class=intent, fillcolor=lightblue, label="restaurant_searchbudget between 300 to 700", shape=rect, style=filled];
+807 [class=intent, fillcolor=lightblue, label="restaurant_searchbudget more than 700", shape=rect, style=filled];
+808 [class=intent, fillcolor=lightblue, label="restaurant_searchbudget more than 700", shape=rect, style=filled];
+809 [class=intent, fillcolor=lightblue, label=affirm, shape=rect, style=filled];
+810 [class=intent, fillcolor=lightblue, label=deny, shape=rect, style=filled];
+811 [class=intent, fillcolor=lightblue, label=deny, shape=rect, style=filled];
+812 [class=intent, fillcolor=lightblue, label="send_emailemail kaustubhpargaonkargmailcom", shape=rect, style=filled];
+813 [class=intent, fillcolor=lightblue, label="send_emailemail kpcom", shape=rect, style=filled];
+814 [class=intent, fillcolor=lightblue, label="send_emailemail xyztestcom", shape=rect, style=filled];
+815 [class=intent, fillcolor=lightblue, label="send_emailemail testcom", shape=rect, style=filled];
+816 [class=intent, fillcolor=lightblue, label=out_of_scope, shape=rect, style=filled];
+817 [class=intent, fillcolor=lightblue, label=deny, shape=rect, style=filled];
+818 [class=intent, fillcolor=lightblue, label=restaurant_search, shape=rect, style=filled];
+819 [class=intent, fillcolor=lightblue, label=restaurant_search, shape=rect, style=filled];
+0 -> 783  [class="", key=0];
+0 -> 784  [class="", key=0];
+0 -> 785  [class="", key=0];
+0 -> 786  [class="", key=0];
+0 -> 787  [class="", key=0];
+0 -> 788  [class="", key=0];
+0 -> 789  [class="", key=0];
+0 -> 790  [class="", key=0];
+1 -> 791  [class="", key=0];
+1 -> 792  [class="", key=0];
+1 -> 793  [class="", key=0];
+1 -> 794  [class="", key=0];
+1 -> 795  [class="", key=0];
+1 -> 796  [class="", key=0];
+1 -> 797  [class="", key=0];
+1 -> 798  [class="", key=0];
+1 -> 799  [class="", key=0];
+2 -> 800  [class="", key=0];
+3 -> 4  [class="", key=NONE, label=""];
+3 -> 43  [class="", key=NONE, label=""];
+3 -> 2  [class="", key=NONE, label=""];
+3 -> 5  [class="", key=NONE, label=""];
+3 -> 17  [class="", key=NONE, label=""];
+3 -> 18  [class="", key=NONE, label=""];
+3 -> 19  [class="", key=NONE, label=""];
+3 -> 718  [class="", key=NONE, label=""];
+4 -> 801  [class="", key=0];
+4 -> 802  [class="", key=0];
+5 -> 6  [class="", key=NONE, label=""];
+5 -> 17  [class="", key=NONE, label=""];
+6 -> 803  [class="", key=0];
+7 -> 6  [class="", key=NONE, label=""];
+7 -> 10  [class="", key=NONE, label=""];
+10 -> 804  [class="", key=0];
+10 -> 805  [class="", key=0];
+11 -> 12  [class="", key=NONE, label=""];
+12 -> "-1"  [class="", key=NONE, label=""];
+12 -> 23  [class="", key=NONE, label=""];
+17 -> 806  [class="", key=0];
+17 -> 807  [class="", key=0];
+17 -> 808  [class="", key=0];
+18 -> 19  [class="", key=NONE, label=""];
+19 -> 20  [class="", key=NONE, label=""];
+20 -> 21  [class="", key=NONE, label=""];
+20 -> 23  [class="", key=NONE, label=""];
+21 -> 809  [class="", key=0];
+21 -> 810  [class="", key=0];
+21 -> 811  [class="", key=0];
+21 -> 812  [class="", key=0];
+21 -> 813  [class="", key=0];
+22 -> 814  [class="", key=0];
+22 -> 815  [class="", key=0];
+23 -> 24  [class="", key=NONE, label=""];
+24 -> 11  [class="", key=NONE, label=""];
+31 -> 19  [class="", key=NONE, label=""];
+31 -> 2  [class="", key=NONE, label=""];
+31 -> 4  [class="", key=NONE, label=""];
+31 -> 11  [class="", key=NONE, label=""];
+43 -> 18  [class="", key=NONE, label=""];
+43 -> 2  [class="", key=NONE, label=""];
+43 -> 94  [class="", key=NONE, label=""];
+68 -> 4  [class="", key=NONE, label=""];
+68 -> 108  [class="", key=NONE, label=""];
+68 -> 5  [class="", key=NONE, label=""];
+68 -> 159  [class="", key=NONE, label=""];
+68 -> 17  [class="", key=NONE, label=""];
+68 -> 2  [class="", key=NONE, label=""];
+94 -> 2  [class="", key=NONE, label=""];
+108 -> 4  [class="", key=NONE, label=""];
+159 -> 18  [class="", key=NONE, label=""];
+159 -> 94  [class="", key=NONE, label=""];
+187 -> 11  [class="", key=NONE, label=""];
+187 -> 816  [class="", key=0];
+187 -> 817  [class="", key=0];
+192 -> 159  [class="", key=NONE, label=""];
+192 -> 5  [class="", key=NONE, label=""];
+192 -> 108  [class="", key=NONE, label=""];
+192 -> 4  [class="", key=NONE, label=""];
+192 -> 17  [class="", key=NONE, label=""];
+300 -> 2  [class="", key=NONE, label=""];
+321 -> 818  [class="", key=0];
+334 -> 22  [class="", key=NONE, label=""];
+449 -> 819  [class="", key=0];
+718 -> "-1"  [class="", key=NONE, label=""];
+783 -> 1  [class="", key=0];
+784 -> 187  [class="", key=0];
+785 -> 192  [class="", key=0];
+786 -> 300  [class="", key=0];
+787 -> 5  [class="", key=0];
+788 -> 94  [class="", key=0];
+789 -> 108  [class="", key=0];
+790 -> 159  [class="", key=0];
+791 -> 2  [class="", key=0];
+792 -> 68  [class="", key=0];
+793 -> 94  [class="", key=0];
+794 -> 321  [class="", key=0];
+795 -> 449  [class="", key=0];
+796 -> 5  [class="", key=0];
+797 -> 108  [class="", key=0];
+798 -> 43  [class="", key=0];
+799 -> 187  [class="", key=0];
+800 -> 3  [class="", key=0];
+801 -> 5  [class="", key=0];
+802 -> 31  [class="", key=0];
+803 -> 7  [class="", key=0];
+804 -> 11  [class="", key=0];
+805 -> 18  [class="", key=0];
+806 -> 18  [class="", key=0];
+807 -> 94  [class="", key=0];
+808 -> 108  [class="", key=0];
+809 -> 22  [class="", key=0];
+810 -> 11  [class="", key=0];
+811 -> 718  [class="", key=0];
+812 -> 23  [class="", key=0];
+813 -> 334  [class="", key=0];
+814 -> 23  [class="", key=0];
+815 -> 334  [class="", key=0];
+816 -> 187  [class="", key=0];
+817 -> 187  [class="", key=0];
+818 -> 2  [class="", key=0];
+819 -> 2  [class="", key=0];
+}
+`;
+    drawGraph(graph);
+  } else {
+    serveGraph();
+  }
+
+
+</script>
+</body>
+</html>
