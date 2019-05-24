@@ -87,7 +87,7 @@ class ActionSearchRestaurants(Action):
 		return 'action_restaurant'
 		
 	def run(self, dispatcher, tracker, domain):
-		config={ "user_key":"a07a8055e35991018a53ee01ff144b8b"}#type your zomato API key here
+		config={ "user_key":"ZOMATO_API"}#type your zomato API key here
 		zomato = zomatopy.initialize_app(config)
 		loc = tracker.get_slot('location')
 		cuisine = tracker.get_slot('cuisine')
@@ -167,7 +167,7 @@ class ActionSendEmail(Action):
 		return 'action_email'		
     		
 	def run(self, dispatcher, tracker, domain):
-		config={"user_key":"a07a8055e35991018a53ee01ff144b8b"}#type your zomato API key here
+		config={"user_key":"ZOMATO_API"}#type your zomato API key here
 		zomato = zomatopy.initialize_app(config)
 		loc = tracker.get_slot('location')
 		cuisine = tracker.get_slot('cuisine')
@@ -207,8 +207,8 @@ class ActionSendEmail(Action):
 		resrnt_df = resrnt_df.sort_values(['zomato rating','avg. budget for two'], ascending=[False,True])
 		
 		email = tracker.get_slot('email')
-		gmail_user = 'jiwitesh05nov@gmail.com'  #typr your email id here
-		gmail_password = 'jiwihonourable' #typr your password here
+		gmail_user = 'EMAIL'  #typr your email id here
+		gmail_password = 'PASSWORD' #typr your password here
 		sent_from = gmail_user  
 		to = str(email)
 		msg = MIMEMultipart('alternative')
