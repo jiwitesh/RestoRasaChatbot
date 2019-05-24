@@ -19,7 +19,7 @@ def initialize_app(config):
 
 class Zomato:
     def __init__(self, config):
-        self.user_key = config["a07a8055e35991018a53ee01ff144b8b"]
+        self.user_key = config["ZOMATO_API_KEY_HERE"]
 
 
     def get_categories(self):
