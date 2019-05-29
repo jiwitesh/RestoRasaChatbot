@@ -7,7 +7,7 @@ from rasa_core.agent import Agent
 from rasa_core.interpreter import RasaNLUInterpreter
 from rasa_core.utils import EndpointConfig
 
-token = '859194746:AAG3bYlsBRcG5FJPwR8Vl4RGhrb7Gl_f93o'
+token = 'TELEGRAM_API_KEY_HERE'
 
 app = Flask(__name__)
 
